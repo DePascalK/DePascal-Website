@@ -1,8 +1,9 @@
-function Profile() {
+function Image() {
   return (
     <img
-      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+      src="https://images.unsplash.com/photo-1469594292607-7bd90f8d3ba4"
+      alt="Blue mountains from above by Brady Bellini"
+      height={200}
     />
   );
 }
@@ -10,10 +11,10 @@ function Profile() {
 function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
-      <Profile />
-      <Profile />
-      <Profile />
+      <h1>Many blue mountains</h1>
+      <Image />
+      <Image />
+      <Image />
     </section>
   );
 }
