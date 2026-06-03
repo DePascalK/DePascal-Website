@@ -121,7 +121,10 @@
 
 // export default App
 
+import './App.css'
 import { getImageUrl } from './utils';
+import { useState } from 'react';
+import { Game } from './tictactoe'
 
 type person = {
     imageId: string;
@@ -134,10 +137,36 @@ type props = {
 
 }
 
-export default function Gallery() {
+export default function MyApp(){
+  //Make buttons update together
+  const [count, setCount] = useState(0)
+  function handleClick(){
+    // alert('You clicked me!');
+    setCount(count+1);
+  }
+  
+  return(
+    <div>
+      <h1>
+        Welcome to my page! Actual content coming soon ish
+      </h1>
+      <h2>Tic-Tac-Toe, try it!</h2>
+      <Game />
+      <hr/>
+      <Gallery />
+      <h2>Synced buttons</h2>
+      <MyButton count={count} onClick={handleClick}/>
+      <MyButton count={count} onClick={handleClick}/>
+      <div className='about-page'>
+        <AboutPage/>
+      </div>
+    </div>
+  );
+}
+
+function Gallery() {
   return (
     <section>
-      <h1>Placeholder content, more coming soon ish</h1>
       <h2>Amazing scientists</h2>
         <Profile />
         <Profile />
@@ -166,5 +195,27 @@ function Profile() {
         person={{ name: 'Lin Lanying', imageId: '1bX5QH6'}}
         size={100}
     />
+  );
+}
+
+type MyButtonProps={
+  count:number;
+  onClick: () => void;
+};
+
+function MyButton({count, onClick}:MyButtonProps){
+  return(
+    <button onClick={onClick}>Clicked {count} times</button>
+  )
+}
+
+function AboutPage(){
+  return(
+    <>
+      <h1>About</h1>
+      <p>
+        Hello there. <br/> How are you?
+      </p>
+    </>
   );
 }
