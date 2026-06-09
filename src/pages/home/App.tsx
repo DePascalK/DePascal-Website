@@ -127,11 +127,13 @@
 
 
 // ---------------------------------------------MY STUFF------------------------------------
-import './App.css'
-import { getImageUrl } from './utils';
+import '../../styles/App.css'
+import { getImageUrl } from '../../shared/utils';
 import { useState } from 'react';
-import { Game } from './tictactoe'
+import Game from '../game/tictactoe'
 import { Button } from 'flowbite-react';
+// import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
+// import Link from "next/link";
 
 type person = {
     imageId: string;
