@@ -128,21 +128,18 @@
 
 // ---------------------------------------------MY STUFF------------------------------------
 import '../../styles/App.css'
-import { getImageUrl } from '../../shared/utils';
 import { useState } from 'react';
-import { Button } from 'flowbite-react';
+import { Button, Card} from 'flowbite-react';
 import { FullNavBar } from '../../shared/ui_elements';
+import { getImageUrl } from '../../shared/utils';
 
 type person = {
     imageId: string;
     name: string;
 };
 
-type props = {
-  person: person;
-  size: number;
 
-}
+
 
 export default function MyApp(){
   //Make buttons update together
@@ -155,15 +152,42 @@ export default function MyApp(){
   return(
     <div>
       <FullNavBar/>
-      <h1>
+      <h1 className='ml-2'>
         Welcome to my page! Actual content coming soon ish
       </h1>
-      <hr/>
-      <Gallery />
-      <h2>Synced buttons</h2>
-      <MyButton count={count} onClick={handleClick}/>
-      <MyButton count={count} onClick={handleClick}/>
-      <Button color="green" size="sm">Looks good → does nothing </Button>
+      <hr className="my-2"/>
+      <div className="page-content">
+
+          <Button onClick={() => console.log("Clicked!")} pill> Button to click </Button>
+          <hr className="mt-4 mb-8"/>
+          <div className="flex flex-wrap gap-4">
+              <MyCard
+                  title="Card One"
+                  description="This goes back home, try it!"
+                  href="/"
+                  buttonText="Home"
+              />
+              <MyCard
+                  title="Card Two"
+                  description="This goes to the game :)"
+                  href="/game_page/"
+                  buttonText="Play"
+              />                    
+              <MyCard
+                  title="Card Three"
+                  description="This goes to subpage 1"
+                  href="/subpage1/"
+                  buttonText="Click me"
+              />
+              
+          </div>
+        <h2>Synced buttons</h2>
+        <MyButton count={count} onClick={handleClick}/>
+        <MyButton count={count} onClick={handleClick}/>
+        <Button color="green" size="sm">Looks good → does nothing </Button>
+        <MyGallery/>
+      </div>
+      <hr className='my-2'/>
       <div className='about-page'>
         <AboutPage/>
       </div>
@@ -171,38 +195,28 @@ export default function MyApp(){
   );
 }
 
-function Gallery() {
-  return (
-    <section>
-      <h2>Amazing scientists</h2>
-        <Profile />
-        <Profile />
-        <Profile />
-    </section>
-  );
+// person1={{ name: 'Lin Lanying', imageId: '1bX5QH6' }}
+// person2={{ name: 'Katsuko Saruhashi', imageId: 'YfeOqp2' }}
+// person3={{ name: 'Creola Katherine Johnson', imageId: 'MK3eW3A' }}
+
+function MyGallery(){
+  return(
+    <div className='flex flex-wrap my-2' >
+      <MyAvatar name="Lin Lanying" imageId="1bX5QH6"/>
+      <MyAvatar name="Katsuko Saruhashi" imageId="YfeOqp2"/>
+      <MyAvatar name="Creola Katherine Johnson" imageId="MK3eW3A"/>
+    </div>
+  )
 }
 
-function Avatar(props:props) {
-  const person = props.person;
-  const size = props.size;
-  return (
+function MyAvatar({name, imageId}:person){
+  return(
     <img
       className="avatar"
-      src={getImageUrl(person)}
-      alt={person.name}
-      width={size}
-      height={size}
+      src={getImageUrl({ name: name, imageId: imageId })}
+      alt={name}
     />
-  );
-}
-
-export function Profile() {
-  return (
-    <Avatar 
-        person={{ name: 'Lin Lanying', imageId: '1bX5QH6'}}
-        size={100}
-    />
-  );
+  )
 }
 
 type MyButtonProps={
@@ -215,6 +229,43 @@ function MyButton({count, onClick}:MyButtonProps){
     <button className= "btn-default" onClick={onClick}>Clicked {count} times</button>
   )
 }
+
+
+type MyCardProps = {
+    title: string;
+    description: string;
+    href: string;
+    buttonText: string;
+}
+
+function MyCard({title, description, href, buttonText}: MyCardProps) {
+    return (
+        <Card className="max-w-sm w-60 h-100">
+          <div className="flex-1">
+
+            <h5 className="text-2x1 font-bold tracking-tight text-gray-900 dark:text-white text-3xl">
+                {title}
+
+            </h5>
+            <p className="font-normal text-gray-700 dark:text-gray-400">
+                {description}
+            </p>
+          </div>
+            <Button href={href} className="font-mono mt-auto">
+                {buttonText}
+                {/* This creates the arrow on the button */}
+                <svg className="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20" href="http://www.w3.org/2000/svg">
+                    <path
+                        fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                        />
+                </svg>
+            </Button>
+        </Card>
+    )
+}
+
 
 function AboutPage(){
   return(

@@ -3,11 +3,16 @@
 }
 
 .about-page {
-  position: fixed;
+  position: relative;
   bottom: 0;
   color: green;
+  margin-left: calc(var(--spacing) * 2);
 }
 
+.page-content {
+  margin-left: calc(var(--spacing) * 4);
+  margin-right: calc(var(--spacing) * 6);
+}
 /* 
 .counter {
   font-size: 16px;
