@@ -1,6 +1,5 @@
 import '../../styles/App.css'
 import { Button } from 'flowbite-react';
-import { FullNavBar } from '../../shared/ui_elements';
 import { ImageCta } from '../../shared/imageCTA';
 import heroImg from "../../assets/hero.png"; // ← replace with your own image
 import { RouterLink } from '../../shared/utils';

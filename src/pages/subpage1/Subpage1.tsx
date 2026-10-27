@@ -1,4 +1,3 @@
-"use client";
 import { getImageUrl } from '../../shared/utils';
 import '../../styles/App.css'
 

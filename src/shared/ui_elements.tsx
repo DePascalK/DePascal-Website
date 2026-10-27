@@ -1,5 +1,4 @@
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
-import { Link, type LinkProps } from "react-router";
 import { RouterLink } from "./utils";
 
 
