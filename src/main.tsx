@@ -1,7 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import '../../styles/index.css'
-import App from './App'
+import { RouterProvider } from 'react-router/dom'
+import { router } from './router.tsx'
+import './styles/index.css'
+// import Game from 'pages/game/TicTacToe.tsx'
+// import { FullNavBar } from 'shared/ui_elements.tsx'
+// import App from 'pages/home/Home.tsx'
 import { createTheme, ThemeProvider } from "flowbite-react";
 
 const siteTheme = createTheme({
@@ -18,15 +22,10 @@ const siteTheme = createTheme({
   },
 });
 
-createRoot(document.getElementById("root")!).render(
-  <ThemeProvider theme={siteTheme}>
-    <App />
-  </ThemeProvider>
-);
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={siteTheme}>
-      <App />
+        <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>,
 )

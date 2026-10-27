@@ -1,41 +1,17 @@
-// ---------------------------------------------MY STUFF------------------------------------
 import '../../styles/App.css'
-// import { getImageUrl } from '../../shared/utils';
-// import { useState } from 'react';
 import { Button } from 'flowbite-react';
 import { FullNavBar } from '../../shared/ui_elements';
 import { ImageCta } from '../../shared/imageCTA';
 import heroImg from "../../assets/hero.png"; // ← replace with your own image
-
-// type person = {
-//     imageId: string;
-//     name: string;
-// };
-
-// type props = {
-//   person: person;
-//   size: number;
-
-// }
+import { RouterLink } from '../../shared/utils';
 
 export default function MyApp(){
-  // //Make buttons update together
-  // const [count, setCount] = useState(0)
-  // function handleClick(){
-  //   // alert('You clicked me!');
-  //   setCount(count+1);
-  // }
+
   
   return(
     <div className='flex min-h-screen flex-col'>
-      <FullNavBar/>
         <hr/>
       <main className='page-container flex-1 py-8'>
-
-        {/* <h1>
-          Welcome to my page! Actual content coming soon ish
-        </h1>
-        <Gallery /> */}
         <Hero/>
         <ImageCta
           title="Projects"
@@ -67,10 +43,6 @@ export default function MyApp(){
           href="/applets"
           reverse
         />
-        {/* <h2>Synced buttons</h2>
-        <MyButton count={count} onClick={handleClick}/>
-        <MyButton count={count} onClick={handleClick}/> */}
-        {/* <Button color="green" size="sm">Looks good → does nothing </Button> */}
       </main>
       <div className='about-page'>
         <AboutPage/>
@@ -78,51 +50,6 @@ export default function MyApp(){
     </div>
   );
 }
-
-// function Gallery() {
-//   return (
-//     <section>
-//       <h2>Amazing scientists</h2>
-//         <Profile />
-//         <Profile />
-//         <Profile />
-//     </section>
-//   );
-// }
-
-// function Avatar(props:props) {
-//   const person = props.person;
-//   const size = props.size;
-//   return (
-//     <img
-//       className="avatar"
-//       src={getImageUrl(person)}
-//       alt={person.name}
-//       width={size}
-//       height={size}
-//     />
-//   );
-// }
-
-// export function Profile() {
-//   return (
-//     <Avatar 
-//         person={{ name: 'Lin Lanying', imageId: '1bX5QH6'}}
-//         size={100}
-//     />
-//   );
-// }
-
-// type MyButtonProps={
-//   count:number;
-//   onClick: () => void;
-// };
-
-// function MyButton({count, onClick}:MyButtonProps){
-//   return(
-//     <Button className='text-lg' onClick={onClick}>Clicked {count} times</Button>
-//   )
-// }
 
 function AboutPage(){
   return(
@@ -149,7 +76,7 @@ export function Hero() {
  
         <div className="flex flex-wrap gap-3">
           {/* Primary CTA — themed Flowbite button (orange, dark text) */}
-          <Button href="/projects" size="lg" className="inline-flex items-center">
+          <Button as={RouterLink} href="/projects" size="lg" className="inline-flex items-center">
             What should this button do?
             <svg
               className="-mr-1 ml-2 h-5 w-5"

@@ -1,22 +1,22 @@
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
-// import Link from "next/link";
-
+import { Link, type LinkProps } from "react-router";
+import { RouterLink } from "./utils";
 
 
 export function FullNavBar() {
   return (
     <Navbar fluid rounded className="mb-3">
-      <NavbarBrand  href="/">
+      <NavbarBrand as={RouterLink} href="/">
         {/* <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" /> */}
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Home</span>
       </NavbarBrand>
       <NavbarToggle />
       <NavbarCollapse>
-        <NavbarLink href="/">Home</NavbarLink>
-        <NavbarLink  href="/game_page/">Game</NavbarLink>
-        <NavbarLink href="/subpage1/">Subpage1</NavbarLink>
-        <NavbarLink href="#">Future</NavbarLink>
-        <NavbarLink href="#">Contents</NavbarLink>
+        <NavbarLink as={RouterLink} href="/">Home</NavbarLink>
+        <NavbarLink as={RouterLink} href="/game">Game</NavbarLink>
+        <NavbarLink as={RouterLink} href="/subpage1">Subpage1</NavbarLink>
+        <NavbarLink as={RouterLink} href="#">Future</NavbarLink>
+        <NavbarLink as={RouterLink} href="#">Contents</NavbarLink>
       </NavbarCollapse>
     </Navbar>
   );

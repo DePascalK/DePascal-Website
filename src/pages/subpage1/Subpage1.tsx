@@ -1,5 +1,4 @@
 "use client";
-import { FullNavBar } from "../../shared/ui_elements";
 import { getImageUrl } from '../../shared/utils';
 import '../../styles/App.css'
 
@@ -18,7 +17,6 @@ type props = {
 export default function App(){
     return(
         <div>
-            <FullNavBar/>
             <Gallery/>
 
         </div>
